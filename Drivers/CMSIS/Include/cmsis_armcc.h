@@ -27,78 +27,78 @@
 
 
 #if defined(__ARMCC_VERSION) && (__ARMCC_VERSION < 400677)
-#error "Please use Arm Compiler Toolchain V4.0.677 or later!"
+  #error "Please use Arm Compiler Toolchain V4.0.677 or later!"
 #endif
 
 /* CMSIS compiler control architecture macros */
-#if ((defined (__TARGET_ARCH_6_M  ) && (__TARGET_ARCH_6_M == 1)) || \
-     (defined (__TARGET_ARCH_6S_M ) && (__TARGET_ARCH_6S_M == 1)))
-#define __ARM_ARCH_6M__           1
+#if ((defined (__TARGET_ARCH_6_M  ) && (__TARGET_ARCH_6_M   == 1)) || \
+     (defined (__TARGET_ARCH_6S_M ) && (__TARGET_ARCH_6S_M  == 1))   )
+  #define __ARM_ARCH_6M__           1
 #endif
 
-#if (defined (__TARGET_ARCH_7_M ) && (__TARGET_ARCH_7_M == 1))
-#define __ARM_ARCH_7M__           1
+#if (defined (__TARGET_ARCH_7_M ) && (__TARGET_ARCH_7_M  == 1))
+  #define __ARM_ARCH_7M__           1
 #endif
 
 #if (defined (__TARGET_ARCH_7E_M) && (__TARGET_ARCH_7E_M == 1))
-#define __ARM_ARCH_7EM__          1
+  #define __ARM_ARCH_7EM__          1
 #endif
 
-/* __ARM_ARCH_8M_BASE__  not applicable */
-/* __ARM_ARCH_8M_MAIN__  not applicable */
+  /* __ARM_ARCH_8M_BASE__  not applicable */
+  /* __ARM_ARCH_8M_MAIN__  not applicable */
 
 
 /* CMSIS compiler specific defines */
 #ifndef   __ASM
-#define __ASM                                  __asm
+  #define __ASM                                  __asm
 #endif
 #ifndef   __INLINE
-#define __INLINE                               __inline
+  #define __INLINE                               __inline
 #endif
 #ifndef   __STATIC_INLINE
-#define __STATIC_INLINE                        static __inline
+  #define __STATIC_INLINE                        static __inline
 #endif
-#ifndef   __STATIC_FORCEINLINE
-#define __STATIC_FORCEINLINE                   static __forceinline
-#endif
+#ifndef   __STATIC_FORCEINLINE                 
+  #define __STATIC_FORCEINLINE                   static __forceinline
+#endif           
 #ifndef   __NO_RETURN
-#define __NO_RETURN                            __declspec(noreturn)
+  #define __NO_RETURN                            __declspec(noreturn)
 #endif
 #ifndef   __USED
-#define __USED                                 __attribute__((used))
+  #define __USED                                 __attribute__((used))
 #endif
 #ifndef   __WEAK
-#define __WEAK                                 __attribute__((weak))
+  #define __WEAK                                 __attribute__((weak))
 #endif
 #ifndef   __PACKED
-#define __PACKED                               __attribute__((packed))
+  #define __PACKED                               __attribute__((packed))
 #endif
 #ifndef   __PACKED_STRUCT
-#define __PACKED_STRUCT                        __packed struct
+  #define __PACKED_STRUCT                        __packed struct
 #endif
 #ifndef   __PACKED_UNION
-#define __PACKED_UNION                         __packed union
+  #define __PACKED_UNION                         __packed union
 #endif
 #ifndef   __UNALIGNED_UINT32        /* deprecated */
-#define __UNALIGNED_UINT32(x)                  (*((__packed uint32_t *)(x)))
+  #define __UNALIGNED_UINT32(x)                  (*((__packed uint32_t *)(x)))
 #endif
 #ifndef   __UNALIGNED_UINT16_WRITE
-#define __UNALIGNED_UINT16_WRITE(addr, val)    ((*((__packed uint16_t *)(addr))) = (val))
+  #define __UNALIGNED_UINT16_WRITE(addr, val)    ((*((__packed uint16_t *)(addr))) = (val))
 #endif
 #ifndef   __UNALIGNED_UINT16_READ
-#define __UNALIGNED_UINT16_READ(addr)          (*((const __packed uint16_t *)(addr)))
+  #define __UNALIGNED_UINT16_READ(addr)          (*((const __packed uint16_t *)(addr)))
 #endif
 #ifndef   __UNALIGNED_UINT32_WRITE
-#define __UNALIGNED_UINT32_WRITE(addr, val)    ((*((__packed uint32_t *)(addr))) = (val))
+  #define __UNALIGNED_UINT32_WRITE(addr, val)    ((*((__packed uint32_t *)(addr))) = (val))
 #endif
 #ifndef   __UNALIGNED_UINT32_READ
-#define __UNALIGNED_UINT32_READ(addr)          (*((const __packed uint32_t *)(addr)))
+  #define __UNALIGNED_UINT32_READ(addr)          (*((const __packed uint32_t *)(addr)))
 #endif
 #ifndef   __ALIGNED
-#define __ALIGNED(x)                           __attribute__((aligned(x)))
+  #define __ALIGNED(x)                           __attribute__((aligned(x)))
 #endif
 #ifndef   __RESTRICT
-#define __RESTRICT                             __restrict
+  #define __RESTRICT                             __restrict
 #endif
 
 /* ###########################  Core Function Access  ########################### */
@@ -127,9 +127,10 @@
   \details Returns the content of the Control Register.
   \return               Control Register value
  */
-__STATIC_INLINE uint32_t __get_CONTROL(void) {
-    register uint32_t __regControl         __ASM("control");
-    return (__regControl);
+__STATIC_INLINE uint32_t __get_CONTROL(void)
+{
+  register uint32_t __regControl         __ASM("control");
+  return(__regControl);
 }
 
 
@@ -138,9 +139,10 @@ __STATIC_INLINE uint32_t __get_CONTROL(void) {
   \details Writes the given value to the Control Register.
   \param [in]    control  Control Register value to set
  */
-__STATIC_INLINE void __set_CONTROL(uint32_t control) {
-    register uint32_t __regControl         __ASM("control");
-    __regControl = control;
+__STATIC_INLINE void __set_CONTROL(uint32_t control)
+{
+  register uint32_t __regControl         __ASM("control");
+  __regControl = control;
 }
 
 
@@ -149,9 +151,10 @@ __STATIC_INLINE void __set_CONTROL(uint32_t control) {
   \details Returns the content of the IPSR Register.
   \return               IPSR Register value
  */
-__STATIC_INLINE uint32_t __get_IPSR(void) {
-    register uint32_t __regIPSR          __ASM("ipsr");
-    return (__regIPSR);
+__STATIC_INLINE uint32_t __get_IPSR(void)
+{
+  register uint32_t __regIPSR          __ASM("ipsr");
+  return(__regIPSR);
 }
 
 
@@ -160,9 +163,10 @@ __STATIC_INLINE uint32_t __get_IPSR(void) {
   \details Returns the content of the APSR Register.
   \return               APSR Register value
  */
-__STATIC_INLINE uint32_t __get_APSR(void) {
-    register uint32_t __regAPSR          __ASM("apsr");
-    return (__regAPSR);
+__STATIC_INLINE uint32_t __get_APSR(void)
+{
+  register uint32_t __regAPSR          __ASM("apsr");
+  return(__regAPSR);
 }
 
 
@@ -171,9 +175,10 @@ __STATIC_INLINE uint32_t __get_APSR(void) {
   \details Returns the content of the xPSR Register.
   \return               xPSR Register value
  */
-__STATIC_INLINE uint32_t __get_xPSR(void) {
-    register uint32_t __regXPSR          __ASM("xpsr");
-    return (__regXPSR);
+__STATIC_INLINE uint32_t __get_xPSR(void)
+{
+  register uint32_t __regXPSR          __ASM("xpsr");
+  return(__regXPSR);
 }
 
 
@@ -182,9 +187,10 @@ __STATIC_INLINE uint32_t __get_xPSR(void) {
   \details Returns the current value of the Process Stack Pointer (PSP).
   \return               PSP Register value
  */
-__STATIC_INLINE uint32_t __get_PSP(void) {
-    register uint32_t __regProcessStackPointer  __ASM("psp");
-    return (__regProcessStackPointer);
+__STATIC_INLINE uint32_t __get_PSP(void)
+{
+  register uint32_t __regProcessStackPointer  __ASM("psp");
+  return(__regProcessStackPointer);
 }
 
 
@@ -193,9 +199,10 @@ __STATIC_INLINE uint32_t __get_PSP(void) {
   \details Assigns the given value to the Process Stack Pointer (PSP).
   \param [in]    topOfProcStack  Process Stack Pointer value to set
  */
-__STATIC_INLINE void __set_PSP(uint32_t topOfProcStack) {
-    register uint32_t __regProcessStackPointer  __ASM("psp");
-    __regProcessStackPointer = topOfProcStack;
+__STATIC_INLINE void __set_PSP(uint32_t topOfProcStack)
+{
+  register uint32_t __regProcessStackPointer  __ASM("psp");
+  __regProcessStackPointer = topOfProcStack;
 }
 
 
@@ -204,9 +211,10 @@ __STATIC_INLINE void __set_PSP(uint32_t topOfProcStack) {
   \details Returns the current value of the Main Stack Pointer (MSP).
   \return               MSP Register value
  */
-__STATIC_INLINE uint32_t __get_MSP(void) {
-    register uint32_t __regMainStackPointer     __ASM("msp");
-    return (__regMainStackPointer);
+__STATIC_INLINE uint32_t __get_MSP(void)
+{
+  register uint32_t __regMainStackPointer     __ASM("msp");
+  return(__regMainStackPointer);
 }
 
 
@@ -215,9 +223,10 @@ __STATIC_INLINE uint32_t __get_MSP(void) {
   \details Assigns the given value to the Main Stack Pointer (MSP).
   \param [in]    topOfMainStack  Main Stack Pointer value to set
  */
-__STATIC_INLINE void __set_MSP(uint32_t topOfMainStack) {
-    register uint32_t __regMainStackPointer     __ASM("msp");
-    __regMainStackPointer = topOfMainStack;
+__STATIC_INLINE void __set_MSP(uint32_t topOfMainStack)
+{
+  register uint32_t __regMainStackPointer     __ASM("msp");
+  __regMainStackPointer = topOfMainStack;
 }
 
 
@@ -226,9 +235,10 @@ __STATIC_INLINE void __set_MSP(uint32_t topOfMainStack) {
   \details Returns the current state of the priority mask bit from the Priority Mask Register.
   \return               Priority Mask value
  */
-__STATIC_INLINE uint32_t __get_PRIMASK(void) {
-    register uint32_t __regPriMask         __ASM("primask");
-    return (__regPriMask);
+__STATIC_INLINE uint32_t __get_PRIMASK(void)
+{
+  register uint32_t __regPriMask         __ASM("primask");
+  return(__regPriMask);
 }
 
 
@@ -237,14 +247,15 @@ __STATIC_INLINE uint32_t __get_PRIMASK(void) {
   \details Assigns the given value to the Priority Mask Register.
   \param [in]    priMask  Priority Mask
  */
-__STATIC_INLINE void __set_PRIMASK(uint32_t priMask) {
-    register uint32_t __regPriMask         __ASM("primask");
-    __regPriMask = (priMask);
+__STATIC_INLINE void __set_PRIMASK(uint32_t priMask)
+{
+  register uint32_t __regPriMask         __ASM("primask");
+  __regPriMask = (priMask);
 }
 
 
-#if ((defined (__ARM_ARCH_7M__ ) && (__ARM_ARCH_7M__ == 1)) || \
-     (defined (__ARM_ARCH_7EM__) && (__ARM_ARCH_7EM__ == 1)))
+#if ((defined (__ARM_ARCH_7M__ ) && (__ARM_ARCH_7M__  == 1)) || \
+     (defined (__ARM_ARCH_7EM__) && (__ARM_ARCH_7EM__ == 1))     )
 
 /**
   \brief   Enable FIQ
@@ -267,9 +278,10 @@ __STATIC_INLINE void __set_PRIMASK(uint32_t priMask) {
   \details Returns the current value of the Base Priority register.
   \return               Base Priority register value
  */
-__STATIC_INLINE uint32_t __get_BASEPRI(void) {
-    register uint32_t __regBasePri         __ASM("basepri");
-    return (__regBasePri);
+__STATIC_INLINE uint32_t  __get_BASEPRI(void)
+{
+  register uint32_t __regBasePri         __ASM("basepri");
+  return(__regBasePri);
 }
 
 
@@ -278,9 +290,10 @@ __STATIC_INLINE uint32_t __get_BASEPRI(void) {
   \details Assigns the given value to the Base Priority register.
   \param [in]    basePri  Base Priority value to set
  */
-__STATIC_INLINE void __set_BASEPRI(uint32_t basePri) {
-    register uint32_t __regBasePri         __ASM("basepri");
-    __regBasePri = (basePri & 0xFFU);
+__STATIC_INLINE void __set_BASEPRI(uint32_t basePri)
+{
+  register uint32_t __regBasePri         __ASM("basepri");
+  __regBasePri = (basePri & 0xFFU);
 }
 
 
@@ -290,9 +303,10 @@ __STATIC_INLINE void __set_BASEPRI(uint32_t basePri) {
            or the new value increases the BASEPRI priority level.
   \param [in]    basePri  Base Priority value to set
  */
-__STATIC_INLINE void __set_BASEPRI_MAX(uint32_t basePri) {
-    register uint32_t __regBasePriMax      __ASM("basepri_max");
-    __regBasePriMax = (basePri & 0xFFU);
+__STATIC_INLINE void __set_BASEPRI_MAX(uint32_t basePri)
+{
+  register uint32_t __regBasePriMax      __ASM("basepri_max");
+  __regBasePriMax = (basePri & 0xFFU);
 }
 
 
@@ -301,9 +315,10 @@ __STATIC_INLINE void __set_BASEPRI_MAX(uint32_t basePri) {
   \details Returns the current value of the Fault Mask register.
   \return               Fault Mask register value
  */
-__STATIC_INLINE uint32_t __get_FAULTMASK(void) {
-    register uint32_t __regFaultMask       __ASM("faultmask");
-    return (__regFaultMask);
+__STATIC_INLINE uint32_t __get_FAULTMASK(void)
+{
+  register uint32_t __regFaultMask       __ASM("faultmask");
+  return(__regFaultMask);
 }
 
 
@@ -312,9 +327,10 @@ __STATIC_INLINE uint32_t __get_FAULTMASK(void) {
   \details Assigns the given value to the Fault Mask register.
   \param [in]    faultMask  Fault Mask value to set
  */
-__STATIC_INLINE void __set_FAULTMASK(uint32_t faultMask) {
-    register uint32_t __regFaultMask       __ASM("faultmask");
-    __regFaultMask = (faultMask & (uint32_t) 1U);
+__STATIC_INLINE void __set_FAULTMASK(uint32_t faultMask)
+{
+  register uint32_t __regFaultMask       __ASM("faultmask");
+  __regFaultMask = (faultMask & (uint32_t)1U);
 }
 
 #endif /* ((defined (__ARM_ARCH_7M__ ) && (__ARM_ARCH_7M__  == 1)) || \
@@ -326,13 +342,14 @@ __STATIC_INLINE void __set_FAULTMASK(uint32_t faultMask) {
   \details Returns the current value of the Floating Point Status/Control register.
   \return               Floating Point Status/Control register value
  */
-__STATIC_INLINE uint32_t __get_FPSCR(void) {
+__STATIC_INLINE uint32_t __get_FPSCR(void)
+{
 #if ((defined (__FPU_PRESENT) && (__FPU_PRESENT == 1U)) && \
-     (defined (__FPU_USED   ) && (__FPU_USED == 1U)))
-    register uint32_t __regfpscr         __ASM("fpscr");
-    return(__regfpscr);
+     (defined (__FPU_USED   ) && (__FPU_USED    == 1U))     )
+  register uint32_t __regfpscr         __ASM("fpscr");
+  return(__regfpscr);
 #else
-    return (0U);
+   return(0U);
 #endif
 }
 
@@ -342,13 +359,14 @@ __STATIC_INLINE uint32_t __get_FPSCR(void) {
   \details Assigns the given value to the Floating Point Status/Control register.
   \param [in]    fpscr  Floating Point Status/Control value to set
  */
-__STATIC_INLINE void __set_FPSCR(uint32_t fpscr) {
+__STATIC_INLINE void __set_FPSCR(uint32_t fpscr)
+{
 #if ((defined (__FPU_PRESENT) && (__FPU_PRESENT == 1U)) && \
-     (defined (__FPU_USED   ) && (__FPU_USED == 1U)))
-    register uint32_t __regfpscr         __ASM("fpscr");
-    __regfpscr = (fpscr);
+     (defined (__FPU_USED   ) && (__FPU_USED    == 1U))     )
+  register uint32_t __regfpscr         __ASM("fpscr");
+  __regfpscr = (fpscr);
 #else
-    (void) fpscr;
+  (void)fpscr;
 #endif
 }
 
@@ -425,7 +443,7 @@ __STATIC_INLINE void __set_FPSCR(uint32_t fpscr) {
                    __schedule_barrier();\
                 } while (0U)
 
-
+                  
 /**
   \brief   Reverse byte order (32 bit)
   \details Reverses the byte order in unsigned integer value. For example, 0x12345678 becomes 0x78563412.
@@ -442,15 +460,11 @@ __STATIC_INLINE void __set_FPSCR(uint32_t fpscr) {
   \return               Reversed value
  */
 #ifndef __NO_EMBEDDED_ASM
-__attribute__((section(".rev16_text"))) __STATIC_INLINE
-
-__ASM
-
-uint32_t __REV16(uint32_t value) {
-    rev16 r0, r0
-    bx lr
+__attribute__((section(".rev16_text"))) __STATIC_INLINE __ASM uint32_t __REV16(uint32_t value)
+{
+  rev16 r0, r0
+  bx lr
 }
-
 #endif
 
 
@@ -461,15 +475,11 @@ uint32_t __REV16(uint32_t value) {
   \return               Reversed value
  */
 #ifndef __NO_EMBEDDED_ASM
-__attribute__((section(".revsh_text"))) __STATIC_INLINE
-
-__ASM
-
-int16_t __REVSH(int16_t value) {
-    revsh r0, r0
-    bx lr
+__attribute__((section(".revsh_text"))) __STATIC_INLINE __ASM int16_t __REVSH(int16_t value)
+{
+  revsh r0, r0
+  bx lr
 }
-
 #endif
 
 
@@ -499,9 +509,9 @@ int16_t __REVSH(int16_t value) {
   \param [in]    value  Value to reverse
   \return               Reversed value
  */
-#if ((defined (__ARM_ARCH_7M__ ) && (__ARM_ARCH_7M__ == 1)) || \
-     (defined (__ARM_ARCH_7EM__) && (__ARM_ARCH_7EM__ == 1)))
-#define __RBIT                          __rbit
+#if ((defined (__ARM_ARCH_7M__ ) && (__ARM_ARCH_7M__  == 1)) || \
+     (defined (__ARM_ARCH_7EM__) && (__ARM_ARCH_7EM__ == 1))     )
+  #define __RBIT                          __rbit
 #else
 __attribute__((always_inline)) __STATIC_INLINE uint32_t __RBIT(uint32_t value)
 {
@@ -530,8 +540,8 @@ __attribute__((always_inline)) __STATIC_INLINE uint32_t __RBIT(uint32_t value)
 #define __CLZ                             __clz
 
 
-#if ((defined (__ARM_ARCH_7M__ ) && (__ARM_ARCH_7M__ == 1)) || \
-     (defined (__ARM_ARCH_7EM__) && (__ARM_ARCH_7EM__ == 1)))
+#if ((defined (__ARM_ARCH_7M__ ) && (__ARM_ARCH_7M__  == 1)) || \
+     (defined (__ARM_ARCH_7EM__) && (__ARM_ARCH_7EM__ == 1))     )
 
 /**
   \brief   LDR Exclusive (8 bit)
@@ -540,9 +550,9 @@ __attribute__((always_inline)) __STATIC_INLINE uint32_t __RBIT(uint32_t value)
   \return             value of type uint8_t at (*ptr)
  */
 #if defined(__ARMCC_VERSION) && (__ARMCC_VERSION < 5060020)
-#define __LDREXB(ptr)                                                        ((uint8_t ) __ldrex(ptr))
+  #define __LDREXB(ptr)                                                        ((uint8_t ) __ldrex(ptr))
 #else
-#define __LDREXB(ptr)          _Pragma("push") _Pragma("diag_suppress 3731") ((uint8_t ) __ldrex(ptr))  _Pragma("pop")
+  #define __LDREXB(ptr)          _Pragma("push") _Pragma("diag_suppress 3731") ((uint8_t ) __ldrex(ptr))  _Pragma("pop")
 #endif
 
 
@@ -553,9 +563,9 @@ __attribute__((always_inline)) __STATIC_INLINE uint32_t __RBIT(uint32_t value)
   \return        value of type uint16_t at (*ptr)
  */
 #if defined(__ARMCC_VERSION) && (__ARMCC_VERSION < 5060020)
-#define __LDREXH(ptr)                                                        ((uint16_t) __ldrex(ptr))
+  #define __LDREXH(ptr)                                                        ((uint16_t) __ldrex(ptr))
 #else
-#define __LDREXH(ptr)          _Pragma("push") _Pragma("diag_suppress 3731") ((uint16_t) __ldrex(ptr))  _Pragma("pop")
+  #define __LDREXH(ptr)          _Pragma("push") _Pragma("diag_suppress 3731") ((uint16_t) __ldrex(ptr))  _Pragma("pop")
 #endif
 
 
@@ -566,9 +576,9 @@ __attribute__((always_inline)) __STATIC_INLINE uint32_t __RBIT(uint32_t value)
   \return        value of type uint32_t at (*ptr)
  */
 #if defined(__ARMCC_VERSION) && (__ARMCC_VERSION < 5060020)
-#define __LDREXW(ptr)                                                        ((uint32_t ) __ldrex(ptr))
+  #define __LDREXW(ptr)                                                        ((uint32_t ) __ldrex(ptr))
 #else
-#define __LDREXW(ptr)          _Pragma("push") _Pragma("diag_suppress 3731") ((uint32_t ) __ldrex(ptr))  _Pragma("pop")
+  #define __LDREXW(ptr)          _Pragma("push") _Pragma("diag_suppress 3731") ((uint32_t ) __ldrex(ptr))  _Pragma("pop")
 #endif
 
 
@@ -581,9 +591,9 @@ __attribute__((always_inline)) __STATIC_INLINE uint32_t __RBIT(uint32_t value)
   \return          1  Function failed
  */
 #if defined(__ARMCC_VERSION) && (__ARMCC_VERSION < 5060020)
-#define __STREXB(value, ptr)                                                 __strex(value, ptr)
+  #define __STREXB(value, ptr)                                                 __strex(value, ptr)
 #else
-#define __STREXB(value, ptr)   _Pragma("push") _Pragma("diag_suppress 3731") __strex(value, ptr)        _Pragma("pop")
+  #define __STREXB(value, ptr)   _Pragma("push") _Pragma("diag_suppress 3731") __strex(value, ptr)        _Pragma("pop")
 #endif
 
 
@@ -596,9 +606,9 @@ __attribute__((always_inline)) __STATIC_INLINE uint32_t __RBIT(uint32_t value)
   \return          1  Function failed
  */
 #if defined(__ARMCC_VERSION) && (__ARMCC_VERSION < 5060020)
-#define __STREXH(value, ptr)                                                 __strex(value, ptr)
+  #define __STREXH(value, ptr)                                                 __strex(value, ptr)
 #else
-#define __STREXH(value, ptr)   _Pragma("push") _Pragma("diag_suppress 3731") __strex(value, ptr)        _Pragma("pop")
+  #define __STREXH(value, ptr)   _Pragma("push") _Pragma("diag_suppress 3731") __strex(value, ptr)        _Pragma("pop")
 #endif
 
 
@@ -611,9 +621,9 @@ __attribute__((always_inline)) __STATIC_INLINE uint32_t __RBIT(uint32_t value)
   \return          1  Function failed
  */
 #if defined(__ARMCC_VERSION) && (__ARMCC_VERSION < 5060020)
-#define __STREXW(value, ptr)                                                 __strex(value, ptr)
+  #define __STREXW(value, ptr)                                                 __strex(value, ptr)
 #else
-#define __STREXW(value, ptr)   _Pragma("push") _Pragma("diag_suppress 3731") __strex(value, ptr)        _Pragma("pop")
+  #define __STREXW(value, ptr)   _Pragma("push") _Pragma("diag_suppress 3731") __strex(value, ptr)        _Pragma("pop")
 #endif
 
 
@@ -652,15 +662,11 @@ __attribute__((always_inline)) __STATIC_INLINE uint32_t __RBIT(uint32_t value)
   \return               Rotated value
  */
 #ifndef __NO_EMBEDDED_ASM
-__attribute__((section(".rrx_text"))) __STATIC_INLINE
-
-__ASM
-
-uint32_t __RRX(uint32_t value) {
-    rrx r0, r0
-    bx lr
+__attribute__((section(".rrx_text"))) __STATIC_INLINE __ASM uint32_t __RRX(uint32_t value)
+{
+  rrx r0, r0
+  bx lr
 }
-
 #endif
 
 
@@ -781,7 +787,7 @@ __attribute__((always_inline)) __STATIC_INLINE uint32_t __USAT(int32_t val, uint
   @{
 */
 
-#if ((defined (__ARM_ARCH_7EM__) && (__ARM_ARCH_7EM__ == 1)))
+#if ((defined (__ARM_ARCH_7EM__) && (__ARM_ARCH_7EM__ == 1))     )
 
 #define __SADD8                           __sadd8
 #define __QADD8                           __qadd8
@@ -843,13 +849,13 @@ __attribute__((always_inline)) __STATIC_INLINE uint32_t __USAT(int32_t val, uint
 #define __QADD                            __qadd
 #define __QSUB                            __qsub
 
-#define __PKHBT(ARG1, ARG2, ARG3)          ( ((((uint32_t)(ARG1))          ) & 0x0000FFFFUL) |  \
+#define __PKHBT(ARG1,ARG2,ARG3)          ( ((((uint32_t)(ARG1))          ) & 0x0000FFFFUL) |  \
                                            ((((uint32_t)(ARG2)) << (ARG3)) & 0xFFFF0000UL)  )
 
-#define __PKHTB(ARG1, ARG2, ARG3)          ( ((((uint32_t)(ARG1))          ) & 0xFFFF0000UL) |  \
+#define __PKHTB(ARG1,ARG2,ARG3)          ( ((((uint32_t)(ARG1))          ) & 0xFFFF0000UL) |  \
                                            ((((uint32_t)(ARG2)) >> (ARG3)) & 0x0000FFFFUL)  )
 
-#define __SMMLA(ARG1, ARG2, ARG3)          ( (int32_t)((((int64_t)(ARG1) * (ARG2)) + \
+#define __SMMLA(ARG1,ARG2,ARG3)          ( (int32_t)((((int64_t)(ARG1) * (ARG2)) + \
                                                       ((int64_t)(ARG3) << 32U)     ) >> 32U))
 
 #endif /* ((defined (__ARM_ARCH_7EM__) && (__ARM_ARCH_7EM__ == 1))     ) */
